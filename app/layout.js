@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-
+import { Analytics } from "@vercel/analytics/next"
 // Configure Poppins font
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
+        <Analytics />
         {children}
         <Toaster position="top-right" />
       </body>
