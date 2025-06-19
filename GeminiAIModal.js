@@ -91,7 +91,7 @@ Return the JSON object only, without any additional text or explanation.
 };
 
 const evaluateAnswerWithGemini = async ({ userAnswer, question }) => {
-  const apiKey = process.env.GEMINI_API_KEY; // replace with env var in production
+  const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY; // replace with env var in production
   if (!apiKey) {
     console.error("GEMINI_API_KEY is not set");
     return 0; // Default score if API key is missing
