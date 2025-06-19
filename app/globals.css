@@ -3,13 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-heading: var(--font-ibmplex);
+  --font-body: var(--font-ibmplex);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-ibmplex);
+  --font-mono: var(--font-geist-mono); 
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +24,22 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+}
+
+.modal {
+  background: rgb(11, 11, 11);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+}
+.modal button {
+  margin-top: 10px;
+  margin-right: 10px;
 }

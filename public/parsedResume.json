@@ -1,0 +1,99 @@
+{
+  "personal_info": {
+    "name": "Khush Dhameliya",
+    "email": "khushdhameliya007@gmail.com",
+    "phone": "+91-9925496055",
+    "address": ""
+  },
+  "work_experience": [
+    {
+      "title": "Junior Developer",
+      "start_date": "October 2024",
+      "end_date": "Present",
+      "company": "Google Developer Group on Campus (GDGC), SVNIT",
+      "location": "",
+      "description": ""
+    },
+    {
+      "title": "Representative",
+      "start_date": "August 2024",
+      "end_date": "Present",
+      "company": "NEXUS C.S.E Cell, SVNIT",
+      "location": "",
+      "description": ""
+    },
+    {
+      "title": "Executive",
+      "start_date": "August 2024",
+      "end_date": "Present",
+      "company": "Association of Computing Machinery (ACM), SVNIT",
+      "location": "",
+      "description": ""
+    }
+  ],
+  "education": [
+    {
+      "title": "B.Tech., CSE",
+      "start_date": "2023",
+      "end_date": "2027",
+      "institute": "Sardar Vallabhbhai National Institute of Technology, Surat",
+      "location": "Surat",
+      "description": "7.89 (till 3rd Sem)"
+    },
+    {
+      "title": "Senior Secondary",
+      "start_date": "2021",
+      "end_date": "2023",
+      "institute": "J.B. & KARP Vidya Sankul",
+      "location": "",
+      "description": "93.8%"
+    },
+    {
+      "title": "Secondary",
+      "start_date": "",
+      "end_date": "2021",
+      "institute": "J.B. & KARP Vidya Sankul",
+      "location": "",
+      "description": ""
+    }
+  ],
+  "languages": [],
+  "projects": [
+    {
+      "title": "MedManager: Medical Store Management System",
+      "description": "Developed a full-stack inventory and billing system for medical stores with batch tracking and expiration management.",
+      "technologies": "Node.js, Express.js, MongoDB, Tailwind CSS"
+    },
+    {
+      "title": "Helper Buddy: Service Provider Platform",
+      "description": "Built an SEO-optimized marketplace connecting 1000+ users with 200+ verified service providers in Surat.",
+      "technologies": "Next.js, Node.js, MongoDB, Tailwind CSS, Razorpay API"
+    }
+  ],
+  "skills": [
+    "C/C++",
+    "JavaScript",
+    "Python",
+    "HTML",
+    "CSS",
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "Django",
+    "Tailwind CSS",
+    "MongoDB",
+    "PostgreSQL",
+    "MySQL",
+    "Git",
+    "GitHub",
+    "RESTful APIs",
+    "AJAX",
+    "jQuery",
+    "Postman",
+    "SEO Optimization",
+    "Payment Gateway Integration",
+    "API Development"
+  ],
+  "certificates": []
+}
