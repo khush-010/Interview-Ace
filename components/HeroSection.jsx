@@ -136,9 +136,9 @@ export default function HeroSection() {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
-    const handleStartInterview = () => {
-        router.push("/interview");
-    };
+    // const handleStartInterview = () => {
+    //     router.push("/interview");
+    // };
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -212,14 +212,14 @@ export default function HeroSection() {
                         </motion.div>
 
                         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-6">
-                            <button onClick={handleStartInterview} className="group relative px-8 py-4 bg-white text-black text-lg font-bold rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                            <a href="/interview" className="group relative px-8 py-4 bg-white text-black text-lg font-bold rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
                                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
                                 <span className="relative flex items-center justify-center space-x-2">
                                     <Zap className="w-5 h-5" />
                                     <span>Start Free Interview</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                                 </span>
-                            </button>
+                            </a>
                             {/* <button className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white text-lg font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-colors duration-300 flex items-center justify-center space-x-2">
                                 <Play className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                                 <span>Watch Demo</span>
