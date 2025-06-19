@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Analytics />
         {children}
+        <Analytics />
         <Toaster position="top-right" />
       </body>
     </html>
