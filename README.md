@@ -32,4 +32,3 @@ An intelligent and interactive platform designed to simulate real interview scen
 
 ## Project By
 Khush Dhameliya
-"# Interview-Ace" 
