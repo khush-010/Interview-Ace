@@ -54,6 +54,8 @@ export async function middleware(req) {
     "/howitworks",
     "/faqs",
     "/interviewguide",
+    "/api/send-otp",
+    "/api/verify-otp",
   ];
 
   if (

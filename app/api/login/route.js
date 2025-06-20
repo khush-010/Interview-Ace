@@ -26,6 +26,12 @@ export const POST = async (req) => {
             { status: 401 }
         );
     }
+    else if (!user.isverified) {
+        return NextResponse.json(
+            { error: "Email not verified" },
+            { status: 403 }
+        );
+    }
     return NextResponse.json(
         {
             id: user._id,
