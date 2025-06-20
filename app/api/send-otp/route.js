@@ -38,8 +38,22 @@ export const POST = async (req) => {
     const mailOptions = {
       from: process.env.NEXT_PUBLIC_USER_EMAIL_PASS,
       to: email,
-      subject: "Your OTP for Login",
-      text: `Your OTP is: ${otp}`,
+      subject: "Your Interview Ace OTP Code",
+      text: `Hello!\n\nYour OTP for IterviewAce is: ${otp}\n\nThis code will expire in 10 minutes.`,
+      html: `
+        <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5;">
+          <div style="max-width: 500px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+            <h2 style="color: #007bff;"> Your Interview Ace OTP</h2>
+            <p>Hello!</p>
+            <p>Your OTP for accessing Interview Ace is:</p>
+            <h1 style="letter-spacing: 5px; color: #333;">${otp}</h1>
+            <p style="color: #888;">This OTP is valid for <strong>10 minutes</strong>. Please do not share it with anyone.</p>
+            <p>If you didn’t request this, you can safely ignore this email.</p>
+            <br>
+            <p>Best regards,<br><strong>Interview Ace Team</strong></p>
+          </div>
+        </div>
+      `,
     };
 
     await transporter.sendMail(mailOptions);
