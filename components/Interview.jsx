@@ -117,8 +117,8 @@ export default function Interview() {
       setIsResumeParsing(true)
       try {
         // In production, use the actual API call
-        // parsedResume = await uploadResume(resumeFile)
-        parsedResume = sampleParsedResume
+        parsedResume = await uploadResume(resumeFile)
+        // parsedResume = sampleParsedResume
         // await new Promise((resolve) => setTimeout(resolve, 1000))
 
       } catch (error) {
