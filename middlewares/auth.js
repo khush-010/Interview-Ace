@@ -11,7 +11,7 @@ export const verifyToken = async (token) => {
     return null;
   }
 };
-const auth = async (req) => {
+export const auth = async (req) => {
   let token;
   const authHeader = req.headers.get("authorization");
   if (authHeader && authHeader.startsWith("Bearer ")) {
@@ -33,4 +33,4 @@ const auth = async (req) => {
     throw new Error("Not authorized");
   }
 };
-export default auth;
+

@@ -7,7 +7,8 @@ import QuestionModal from "./QuestionModal"
 import ScoreSummaryModal from "./ScoreSummaryModal"
 import sampleParsedResume from "@/public/parsedResume.json"
 import { uploadDatatoAi } from "@/GeminiAIModal"
-
+import {motion, AnimatePresence } from "framer-motion"
+import { Bot, Zap } from "lucide-react"
 
 export default function Interview() {
   const [showModal, setShowModal] = useState(false)
@@ -15,8 +16,8 @@ export default function Interview() {
   const [questionsFetched, setQuestionsFetched] = useState(false)
   const [questionModal, setQuestionModal] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
-const [questions, setQuestions] = useState([])
-const [interviewScores, setInterviewScores] = useState([])
+  const [questions, setQuestions] = useState([])
+  const [interviewScores, setInterviewScores] = useState([])
 
   const [showScoreSummary, setShowScoreSummary] = useState(false)
 
@@ -116,8 +117,8 @@ const [interviewScores, setInterviewScores] = useState([])
       setIsResumeParsing(true)
       try {
         // In production, use the actual API call
-        parsedResume = await uploadResume(resumeFile)
-        // parsedResume = sampleParsedResume
+        // parsedResume = await uploadResume(resumeFile)
+        parsedResume = sampleParsedResume
         // await new Promise((resolve) => setTimeout(resolve, 1000))
 
       } catch (error) {
@@ -194,81 +195,96 @@ const [interviewScores, setInterviewScores] = useState([])
   }
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black animate-gradient-slow z-0" />
-
-      <div className="absolute inset-0 z-10 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-blue-500 rounded-full filter blur-3xl animate-blob" />
-          <div className="absolute top-40 right-10 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl animate-blob animation-delay-2000" />
-          <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-indigo-500 rounded-full filter blur-3xl animate-blob animation-delay-4000" />
-        </div>
+    <div className="min-h-screen w-full bg-black text-white relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
       </div>
 
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 py-12">
-        <div className="w-full max-w-4xl mx-auto text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">AI-Powered Interview</h1>
-          <p className="text-lg md:text-xl text-white/80">
-            Experience a personalized interview tailored to your skills and experience
-          </p>
-        </div>
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 py-12 text-center">
 
-        <div className="w-full max-w-4xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
-          <div className="flex flex-col items-center justify-center space-y-6 py-8">
-            <div className="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-12 h-12 text-white"
-              >
-                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                <line x1="12" x2="12" y1="19" y2="22"></line>
-              </svg>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tighter">
+            AI Interview Coach
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+            Let's get you ready for your next big opportunity. Upload your resume to begin a personalized interview session.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          className="w-full max-w-2xl mt-12 bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl"
+        >
+          <div className="flex flex-col items-center justify-center space-y-6">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center shadow-lg">
+              <Bot className="w-10 h-10 text-white" />
             </div>
-            <h2 className="text-2xl font-semibold text-white">Ready for your interview?</h2>
-            <p className="text-white/80 text-center max-w-md">
-              Our AI will analyze your resume and create personalized questions to help you prepare for your next job
-              interview.
+            <h2 className="text-3xl font-bold text-white">Your Personalized Interview Awaits</h2>
+            <p className="text-gray-300 text-center max-w-md">
+              Our AI will analyze your resume and craft questions tailored specifically to your skills and experience.
             </p>
             {!questionModal && !showModal && !showScoreSummary && (
               <button
                 onClick={() => setShowModal(true)}
-                className="px-8 py-3 bg-white text-purple-900 font-medium rounded-xl hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="group relative mt-4 px-6 py-3 bg-white text-black text-lg font-bold rounded-xl shadow-lg hover:shadow-purple-400/30 transform hover:scale-105 transition-all duration-300 overflow-hidden"
               >
-                Start Interview
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="relative flex items-center justify-center space-x-2">
+                  <Zap className="w-5 h-5" />
+                  <span>Start Interview</span>
+                </span>
               </button>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <InterviewModal isOpen={showModal} onClose={() => setShowModal(false)} onSubmit={handleInterviewData} />
 
-      {isResumeParsing && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-md">
-          <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl flex flex-col items-center space-y-4 border border-white/20">
-            <Loader2 className="w-10 h-10 text-white animate-spin" />
-            <p className="text-white text-lg font-medium">Parsing your resume...</p>
-            <p className="text-gray-400 text-sm">This may take a moment.</p>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isResumeParsing && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-gray-900/50 backdrop-blur-2xl p-8 rounded-2xl shadow-2xl flex flex-col items-center space-y-4 border border-white/10"
+            >
+              <Loader2 className="w-10 h-10 text-white animate-spin" />
+              <p className="text-white text-lg font-medium">Parsing your resume...</p>
+              <p className="text-gray-400 text-sm">This may take a moment.</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {questionsFetched && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-md">
-          <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl flex flex-col items-center space-y-4 border border-white/20">
-            <Loader2 className="w-10 h-10 text-white animate-spin" />
-            <p className="text-white text-lg font-medium">Creating Questions...</p>
-            <p className="text-gray-400 text-sm">This may take a moment.</p>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {questionsFetched && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-gray-900/50 backdrop-blur-2xl p-8 rounded-2xl shadow-2xl flex flex-col items-center space-y-4 border border-white/10"
+            >
+              <Loader2 className="w-10 h-10 text-white animate-spin" />
+              <p className="text-white text-lg font-medium">Creating Questions...</p>
+              <p className="text-gray-400 text-sm">Our AI is personalizing your experience.</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {questionModal && questions.length > 0 && (
         <QuestionModal
@@ -282,5 +298,6 @@ const [interviewScores, setInterviewScores] = useState([])
 
       <ScoreSummaryModal isOpen={showScoreSummary} scores={interviewScores} onClose={handleCloseScoreSummary} />
     </div>
+
   )
 }

@@ -13,31 +13,30 @@ function parseCookies(req) {
 }
 
 export async function middleware(req) {
-  
+
   const path = req.nextUrl.pathname;
   const method = req.method;
   const cookies = parseCookies(req);
   const arr = [
-
+    "/api/signup",
+    "/api/login",
+    "/api/send-otp",
+    "/api/verify-otp",
   ];
 
   // API Authentication
-//   if (path.startsWith("/api")) {
-//     if (method === "GET" ) {
-//         return NextResponse.json(
-//           { error: "Unauthorized access" },
-//           { status: 403 }
-//         );
-    
-//     }
+  if (path.startsWith("/api")) {
+    if (method === "GET") {
+      return NextResponse.json(
+        { error: "Unauthorized access" },
+        { status: 403 }
+      );
 
-//     if (method !== "GET" && !arr.includes(path)) return auth(req);
-//     else if (path === "/api/partner/service") {
-//       return auth(req);
-//     } else if (path === "/api/partner") {
-//       return auth(req);
-//     } else return NextResponse.next();
-//   }
+    }
+
+    if (method !== "GET" && !arr.includes(path)) return auth(req);
+    else return NextResponse.next();
+  }
 
   if (path.startsWith("/_next")) return NextResponse.next();
 
@@ -48,22 +47,18 @@ export async function middleware(req) {
     "/",
     "/favico.svg",
     "/login",
-    "/api/signup",
-    "/api/login",
     "/features",
     "/howitworks",
     "/faqs",
     "/interviewguide",
-    "/api/send-otp",
-    "/api/verify-otp",
   ];
 
   if (
-    publicRoutes.includes(path) 
+    publicRoutes.includes(path)
   ) {
     if (
       isUser &&
-      (path === "/login" )
+      (path === "/login")
     )
       return NextResponse.redirect(new URL("/", req.url));
 
@@ -71,7 +66,7 @@ export async function middleware(req) {
   }
 
   if (isUser && path.startsWith("/user")) return NextResponse.next();
-  if(path==="/interview"){
+  if (path === "/interview") {
     if (isUser) return NextResponse.next();
     else return NextResponse.redirect(new URL("/login", req.url));
   }
