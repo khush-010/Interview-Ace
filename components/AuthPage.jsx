@@ -49,6 +49,26 @@ export default function AuthPage() {
     { icon: Zap, text: "Instant Results", description: "Immediate feedback and scoring" },
   ]
 
+  const publicDomains =[
+    "gmail.com",
+    "yahoo.com",
+    "outlook.com",
+    "hotmail.com",
+    "icloud.com",
+    "aol.com",
+    "mail.com",
+    "gmx.com",
+    "protonmail.com",
+    "zoho.com",
+    "msn.com"
+  ]
+
+  function isPublicEmail(email) {
+    if (!email) return false
+    const domain = email.split("@")[1]
+    return !publicDomains.includes(domain.toLowerCase())
+  }
+
   // Function to mask email
   const maskEmail = (email) => {
     if (!email) return ""
@@ -284,6 +304,11 @@ export default function AuthPage() {
         toast.error("Please enter a valid email address")
         setIsLoading(false)
         return
+      }
+      if( isPublicEmail(formData.email)) {
+        toast.error("Please use only common email domains like gmail, yahoo, etc.")        
+        setIsLoading(false)
+        return  
       }
       if (formData.password.length < 8) {
         toast.error("Password must be at least 8 characters long")
